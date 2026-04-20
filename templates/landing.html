@@ -16,7 +16,7 @@
     </p>
     <div class="hero-actions">
         <a href="{{ url_for('register') }}" class="btn-dark">Create free account</a>
-        <a href="#" class="btn-dark">See how it works</a>
+        <button class="btn-dark" id="open-video-modal">See how it works</button>
     </div>
     <div class="hero-browser">
         <div class="browser-titlebar">
@@ -88,4 +88,47 @@
     </div>
 </section>
 
+<!-- Video Modal -->
+<div id="video-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
+    <div style="position:relative; width:min(860px,90vw);">
+        <button id="close-video-modal" style="position:absolute; top:-2.25rem; right:0; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; line-height:1;">✕</button>
+        <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden; background:#000;">
+            <iframe id="video-iframe"
+                src=""
+                data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                style="position:absolute; inset:0; width:100%; height:100%; border:none;">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+    var modal  = document.getElementById('video-modal');
+    var iframe = document.getElementById('video-iframe');
+    var src    = iframe.getAttribute('data-src');
+
+    function openModal() {
+        iframe.src = src;
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        iframe.src = '';
+        modal.style.display = 'none';
+    }
+
+    document.getElementById('open-video-modal').addEventListener('click', openModal);
+    document.getElementById('close-video-modal').addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+})();
+</script>
 {% endblock %}

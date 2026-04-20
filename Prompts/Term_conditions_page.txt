@@ -27,3 +27,14 @@ Change its href from "#" to "/privacy"
 Do not modify anything else on the page
 
 *******************************************************
+@templates/landing.html
+Add a video modal to templates/landing.html triggered by the "See how it works" button.
+Requirements:
+
+Clicking "See how it works" opens a modal overlay
+Modal contains an embedded YouTube video — use https://www.youtube.com/embed/dQw4w9WgXcQ as a placeholder, I will replace it later
+Video must be playable inside the modal
+Modal closes when clicking the close button OR clicking outside the modal
+When the modal closes, the video must stop playing — reset the src attribute on the iframe to kill playback
+Vanilla JS only — no libraries or frameworks
+Do not modify anything else on the page
