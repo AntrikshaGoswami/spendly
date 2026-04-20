@@ -25,3 +25,5 @@ Content should be appropriate for a personal expense tracking app
 Find the "Privacy Policy" footer link
 Change its href from "#" to "/privacy"
 Do not modify anything else on the page
+
+*******************************************************
